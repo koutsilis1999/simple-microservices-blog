@@ -19,7 +19,7 @@ const handleEvent = (type, data) => {
     const post = posts[postId];
     post.comments.push({ id, content, status });
   }
-  if (type == "CommentUpdated") {
+  if (type === "CommentUpdated") {
     const { id, content, postId, status } = data;
     const post = posts[postId];
     const comment = post.comments.find((comment) => {
@@ -46,10 +46,11 @@ app.listen(4002, async () => {
   try {
     const res = await axios.get("http://event-bus-srv:4005/events");
     for (let event of res.data) {
-      console.log("Procesing event:", event.type);
+      console.log("Processing event:", event.type);
+
       handleEvent(event.type, event.data);
     }
-  } catch (err) {
-    console.log(err.message);
+  } catch (error) {
+    console.log(error.message);
   }
 });

@@ -31,5 +31,5 @@ app.get("/events", (_req, res) => {
 });
 
 app.listen(4005, () => {
-  console.log("Listeninng on 4005");
+  console.log("Listening on 4005");
 });
