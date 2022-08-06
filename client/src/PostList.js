@@ -1,10 +1,9 @@
-/* eslint-disable import/no-anonymous-default-export */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CommentCreate from "./CommentCreate";
 import CommentList from "./CommentList";
 
-export default () => {
+const PostList = () => {
   const [posts, setPosts] = useState({});
 
   const fetchPosts = async () => {
@@ -17,7 +16,7 @@ export default () => {
     fetchPosts();
   }, []);
 
-  const renderPosts = Object.values(posts).map((post) => {
+  const renderedPosts = Object.values(posts).map((post) => {
     return (
       <div
         className="card"
@@ -35,7 +34,8 @@ export default () => {
 
   return (
     <div className="d-flex flex-row flex-wrap justify-content-between">
-      {renderPosts}
+      {renderedPosts}
     </div>
   );
 };
+export default PostList;
